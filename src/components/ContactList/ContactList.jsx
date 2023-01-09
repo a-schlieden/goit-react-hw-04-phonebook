@@ -6,13 +6,19 @@ import { ContactListItem } from "components/ContactListItem/ContactListItem";
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
     return (
-        <ul className={style.contactList}>
-            {contacts.map(item => (
-                <li key={item.id} className={style.contactListItem}>
-                    <ContactListItem name={item.name} number={item.number} deleteContact={() => onDeleteContact(item.id)} />
-                </li>
-            ))}
-        </ul>
+        <>
+            {contacts.length === 0 ?
+                (<p> No saved contacts </p>) :
+                (<ul className={style.contactList}>
+                    {contacts.map(item => (
+                        <li key={item.id} className={style.contactListItem}>
+                            <ContactListItem name={item.name} number={item.number} deleteContact={() => onDeleteContact(item.id)} />
+                        </li>
+                    ))}
+                </ul>)
+
+            }
+        </>
     );
 };
 
